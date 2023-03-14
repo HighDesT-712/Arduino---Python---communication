@@ -1,0 +1,27 @@
+What is the best way to detect faces and to send the answer to your arduino?
+this is what I did and what I learned.
+Sometimes we could have problems with baud rate
+configuration in our arduino or we could dont understan how the connection
+between arduino and python works, but we wanna develop programs that use 
+neural networks and arduino because both united are a powerful tool and could be improved
+I decided to do this program to understand  betterthis kind of project.
+
+For serial communication in arduino IDE, you can easily use Serial library 
+For Python you use import serial
+For Python neural network  you can use cvzone library, i have to say
+they have created a very useful library that let us use efficient
+commands, the neural network they use in their library based on BlazeFace, based on SSD algorithm
+you just have to download the .zip i am sharing to you in this repository and 
+read all the functions defined in its .py codes.
+
+The baud rate that i used is 115200. but you can use, what ever you have, or you choose
+the problem is that when you try to use that baudrate in cvzone example for reading data from 
+arduino in python, you could have problems if you dont modify the libraries as well
+as you modified the main codes of arduino and python, for that in my program
+ I only used cvzone library for detecting objects(the neural networks detection)
+and the rest of the program was created with serial library and cv2(of course)
+
+I almost forgot, if I are using an external camera for detecting objects
+you have to change this line of code in python  :  cap = cv2.VideoCapture(0)
+
+Read the Readme.md xD

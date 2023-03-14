@@ -1,0 +1,19 @@
+import cv2
+from cvzone.FaceDetectionModule import FaceDetector
+import serial
+
+cap = cv2.VideoCapture(1) #1 because this is internal camera
+detector = FaceDetector() # minDetectionCon= 0.5 by default it is 0.5
+arduino = serial.Serial("COM7",baudrate = 115200, timeout = .1) #el baud rate debe ser el mismo que el indicado en arduinoIDE
+
+while True :
+    success, img = cap.read()
+    img,bboxs = detector.findFaces(img) #usa modelo basado  en SSD
+
+    if bboxs:
+        arduino.write(b'1')
+    else:
+        arduino.write(b'0')
+
+    cv2.imshow("image", img)
+    cv2.waitKey(1)
